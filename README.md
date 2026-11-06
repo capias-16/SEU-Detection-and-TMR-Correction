@@ -14,6 +14,10 @@ SEU-Detection-and-TMR-Correction/
 │   └── design.sv
 ├── Testbench/
 │   └── testbench.sv
+├── Simulation/
+│   └── simulation_results.txt
+├── Images/
+│   └── tmr_waveform.png
 ├── README.md
 └── LICENSE
 ```
@@ -56,7 +60,13 @@ The supplied testbench loads `8'b10110110` into all three registers and injects 
 | R2 fault | R2 | 5 |
 | R3 fault | R3 | 0 |
 
-The testbench prints the error indication after each injected fault and prints the output after the recovery cycle. The expected recovered output for each single-register fault is `10110110`.
+The EDA Playground console shows `error=1` for each injected fault. After recovery, each case reports `error=0` and `output=10110110`. The detailed run summary is in [`Simulation/simulation_results.txt`](Simulation/simulation_results.txt).
+
+## EPWave waveform
+
+The waveform shows the three register copies being loaded with `10110110`, diverging during the three fault injections, and returning to the common correct value after each recovery.
+
+![EPWave waveform showing TMR fault injection and recovery](Images/tmr_waveform.png)
 
 ## Running the simulation
 
@@ -93,4 +103,4 @@ Electronics and Communication Engineering
 
 ---
 
-*Project report, captured simulation logs, and waveform screenshots can be added as they are finalized.*
+*The project report, synthesis evidence, and additional test coverage can be added as they are finalized.*
