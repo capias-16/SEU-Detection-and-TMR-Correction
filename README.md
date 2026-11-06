@@ -1,6 +1,6 @@
 # SEU Detection and Correction Using Triple Modular Redundancy (TMR)
 
-A SystemVerilog implementation of a simple Single Event Upset (SEU) detection and recovery system using Triple Modular Redundancy.
+A SystemVerilog implementation of a Single Event Upset (SEU) detection and recovery system using Triple Modular Redundancy.
 
 ## Project overview
 
@@ -17,6 +17,7 @@ SEU-Detection-and-TMR-Correction/
 ├── Simulation/
 │   └── simulation_results.txt
 ├── Images/
+│   ├── eda_playground_console.png
 │   └── tmr_waveform.png
 ├── README.md
 └── LICENSE
@@ -60,11 +61,19 @@ The supplied testbench loads `8'b10110110` into all three registers and injects 
 | R2 fault | R2 | 5 |
 | R3 fault | R3 | 0 |
 
-The EDA Playground console shows `error=1` for each injected fault. After recovery, each case reports `error=0` and `output=10110110`. The detailed run summary is in [`Simulation/simulation_results.txt`](Simulation/simulation_results.txt).
+The EDA Playground console shows `error=1` for each injected fault. After recovery, each case reports `error=0` and `output=10110110`. The simulator run terminates normally with zero simulation errors; its summary reports one optimization warning from `vopt`. See the [detailed results](Simulation/simulation_results.txt).
 
-## EPWave waveform
+## Simulation evidence
 
-The waveform shows the three register copies being loaded with `10110110`, diverging during the three fault injections, and returning to the common correct value after each recovery.
+### EDA Playground console output
+
+The console capture shows all three fault-detection and recovery messages and the simulator's final run summary.
+
+![EDA Playground console showing SEU detection and recovery results](Images/eda_playground_console.png)
+
+### EPWave timing waveform
+
+The waveform shows the three register copies loaded with `10110110`, diverging during each fault injection, and returning to the common correct value after recovery.
 
 ![EPWave waveform showing TMR fault injection and recovery](Images/tmr_waveform.png)
 
