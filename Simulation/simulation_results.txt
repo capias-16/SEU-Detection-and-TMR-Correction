@@ -24,11 +24,16 @@ Fault-injection scenarios
    R3 FAULT:     error=1
    R3 RECOVERY:  error=0 output=10110110
 
+Simulation summary
+------------------
+The testbench reached $finish normally at 91 ns.
+The simulator reports zero errors. The final summary reports one warning in
+the vopt optimization stage; qrun, vlog, and vsim each report zero warnings.
+
 Conclusion
 ----------
 All three tested single-register, single-bit fault-injection cases asserted the
-error signal and recovered to the original 8-bit output, 10110110. The console
-shows the simulation terminating normally at $finish with no simulation errors.
+error signal and recovered to the original 8-bit output, 10110110.
 
 Evidence
 --------
